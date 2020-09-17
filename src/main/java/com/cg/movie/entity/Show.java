@@ -29,10 +29,13 @@ public class Show {
 	private LocalDate showDate;
 	@Column(name="screen_name", length=25)
 	private String screenName;
+	@Column(name="location", length=25)
+	private String location;
 	
 	@Transient
 	private String screenImg;
 	
+
 	@ManyToOne
 	@JoinColumn(name="movie_id", referencedColumnName = "movie_id")
 	private Movie movie = new Movie();
@@ -76,6 +79,14 @@ public class Show {
 
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public Movie getMovie() {

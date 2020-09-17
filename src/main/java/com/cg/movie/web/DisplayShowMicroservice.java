@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.movie.entity.Movie;
 import com.cg.movie.entity.Show;
-import com.cg.movie.exceptions.ShowException;
+import com.cg.movie.exceptions.ShowNotFoundException;
 import com.cg.movie.service.ShowService;
 import com.cg.movie.util.ShowConstants;
 
@@ -23,25 +24,14 @@ public class DisplayShowMicroservice {
 	
 	
 	@GetMapping(ShowConstants.DISPLAY_SHOW_URL)
-	public List<Show> displayShow(@PathVariable("sname") String show) throws ShowException{
-		List<Show> slist=showService.displayShow(show);
-		return slist;
+	public List<Show> displayByMovieId(@PathVariable("sname") int movie) throws ShowNotFoundException{
+		List<Show> s=showService.displayShow(movie);
+		return s;
 	}
 	
 	
 	
-//		@PostMapping(ShowConstants.ADD_SHOW_URL)
-//		public Show addShow(@PathVariable("add") ShowDto sd) {
-//		
-//		return showService.addShow(sd);
-//	}
-		
-		
-		
-//		@DeleteMapping(ShowConstants.DELETE_SHOW_URL)
-//		public String deleteShow(@PathVariable("delete") Show s) throws ShowException {
-//		
-//		return showService.deleteShow(s);
+
 	
 	
 	
